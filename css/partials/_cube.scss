@@ -1,0 +1,193 @@
+// REFERENCES
+// https://css-tricks.com/creating-a-3d-cube-image-gallery/
+// http://codepen.io/chinchang/pen/lLzyB
+
+////////////////////////////////////////////
+// 		SCENE
+////////////////////////////////////////////
+
+//- What we ideally want is that the perspective never changes and remains constant no matter what element we transform.
+
+//- How do we fix this? We wrap all our elements with another DIV to which give the perspective property:
+
+.scene {
+	margin: 100px;
+	width: $cubeSize;
+	height: $cubeSize;
+
+	display: inline-block;
+	@include marginPaddingReset1;
+	margin-top: 50px;
+
+	perspective: 600px;
+}
+
+////////////////////////////////////////////
+// 		END SCENE
+////////////////////////////////////////////
+
+
+////////////////////////////////////////////
+// 		CUBE
+////////////////////////////////////////////
+
+.cube {
+	width: $cubeSize;
+	width: inherit; // from .scene
+	height: $cubeSize;
+	height: inherit; // from .scene
+	position: relative;
+
+	// want all children to have the 3D perspective
+	// the lower the perspective value, the more pronounced the 3D effect
+	perspective: 600px;
+
+	// set up the 3D rendering context
+	// Without an element having the transform-style property set as preserve-3d, its children are rendered as flattened, having no stacking context. Thus even when we bought the front face closer on Z-axis, it continued to render it at its original z-index with no consideration to its position in the 3D space.
+	transform-style: preserve-3d;
+
+	// Now to rotate the cube we can simply apply rotations on the .cube element.
+	// testing
+	// transform: rotateY(180deg);
+	
+	// add transitions
+	@include transitionEffectAllEaseIn(0.6s);
+}
+
+.cube-face {
+	width: inherit;
+	height: inherit;
+	position: absolute;
+	background: red;
+	opacity: 0.8;
+}
+
+////////////////////////////////////////////
+// 		END CUBE
+////////////////////////////////////////////
+
+
+
+// Z-Axis
+// to bring the front face closer to the eye, translate it on the z-axis
+// As you can see, the Z-axis is coming out of the screen straight from the element. Hence, when we translate the front face positively on the Z-axis, it appears closer to us.
+// Note how the axes rotated along with element. This means that Z-axis is no longer coming straight towards us. Instead it is in the direction of the element. So if were to move it along the Z-axis now, it would move in the direction in which the element is facing.
+// KEY POINT:  Remember, We rotate the face so that it faces the required direction then translate on Z-axis.
+
+////////////////////////////////////////////
+// 		FRONT FACE
+////////////////////////////////////////////
+
+// Nothing to rotate here. Simple move the front face forward by half the cube's length.
+.cube-face-front {
+	background: yellow;
+	transform: translate3d(0, 0, $cubeSize/2);
+	// test line
+	// transform: translate3d(0,0,20px) rotateY(40deg);
+}
+
+////////////////////////////////////////////
+// 		END FRONT FACE
+////////////////////////////////////////////
+
+////////////////////////////////////////////
+// 		BACK FACE
+////////////////////////////////////////////
+
+// The back face will face in the opposite direction to the front one. Which means it needs to be rotated by 180 degrees about the Y-axis before translating
+.cube-face-back {
+	background: orange;
+  	transform: rotateY(180deg) translate3d(0, 0, $cubeSize/2);
+}
+
+////////////////////////////////////////////
+// 		END BACK FACE
+////////////////////////////////////////////
+
+
+////////////////////////////////////////////
+// 		LEFT FACE
+////////////////////////////////////////////
+
+// we want it to face towards the left... rotate 90deg clockwise (negative rotation)
+
+.cube-face-left {
+	background: green;
+  	transform: rotateY(-90deg) translate3d(0, 0, $cubeSize/2);
+}
+
+////////////////////////////////////////////
+// 		END LEFT FACE
+////////////////////////////////////////////
+
+
+////////////////////////////////////////////
+// 		RIGHT FACE
+////////////////////////////////////////////
+
+// same as left except positive rotation
+
+.cube-face-right {
+	background: magenta;
+  	transform: rotateY(90deg) translate3d(0, 0, $cubeSize/2);
+}
+
+////////////////////////////////////////////
+// 		END RIGHT FACE
+////////////////////////////////////////////
+
+
+////////////////////////////////////////////
+// 		TOP FACE
+////////////////////////////////////////////
+
+// This face needs to be rotated about the X-axis by 90 degrees so that it faces upwards
+
+.cube-face-top {
+	background: blue;
+	transform: rotateX(90deg) translate3d(0, 0, $cubeSize/2);
+}
+
+////////////////////////////////////////////
+// 		END TOP FACE
+////////////////////////////////////////////
+
+
+////////////////////////////////////////////
+// 		BOTTOM FACE
+////////////////////////////////////////////
+
+.cube-face-bottom {
+	background: red;
+  	transform: rotateX(-90deg) translate3d(0, 0, $cubeSize/2);
+}
+
+////////////////////////////////////////////
+// 		END BOTTOM FACE
+////////////////////////////////////////////
+
+////////////////////////////////////////////
+// 		CONTROLS FOR ROTATION OF CUBE
+////////////////////////////////////////////
+
+// using advanced selectors... when the radio button is checked rotate the .scene .cube by such and such amount
+
+#radio-back:checked ~ .scene .cube {
+  transform: rotateY(180deg);
+} 
+#radio-left:checked ~ .scene .cube {
+  transform: rotateY(90deg);
+} 
+#radio-right:checked ~ .scene .cube {
+  transform: rotateY(-90deg);
+}
+#radio-top:checked ~ .scene .cube {
+  transform: rotateX(-90deg);
+}  
+#radio-bottom:checked ~ .scene .cube {
+  transform: rotateX(90deg);
+}
+
+////////////////////////////////////////////
+// 		END CONTROLS FOR ROTATION OF CUBE
+////////////////////////////////////////////
