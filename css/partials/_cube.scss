@@ -56,6 +56,7 @@
 	0 0 50px rgba(0, 0, 0, 0.3);
 	color: $baseFontColor;
 	line-height: $cubeWidth;
+	// by setting the opacity of the face, you can partially see through to the back images... offers a sense of depth
 	opacity: 0.8;
 }
 
