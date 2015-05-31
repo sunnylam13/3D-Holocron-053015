@@ -39,9 +39,11 @@
 
 	text-align: center;
 	position: relative;
+	// instead of inheriting height and width from the scene, it's set to 100%
 	width: 100%;
 	height: 100%;
 	transform-style: preserve-3d;
+	// the cube itself is transformed so that initially it is already rotated slightly unlike the original
 	transform: rotateX(-15deg) rotateY(15deg);
 }
 
@@ -55,6 +57,7 @@
 	box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.1),
 	0 0 50px rgba(0, 0, 0, 0.3);
 	color: $baseFontColor;
+	// a line height was also set which wasn't in the original... removing it doesn't seem to do anything
 	line-height: $cubeWidth;
 	// by setting the opacity of the face, you can partially see through to the back images... offers a sense of depth
 	opacity: 0.8;
@@ -71,6 +74,14 @@
 // As you can see, the Z-axis is coming out of the screen straight from the element. Hence, when we translate the front face positively on the Z-axis, it appears closer to us.
 // Note how the axes rotated along with element. This means that Z-axis is no longer coming straight towards us. Instead it is in the direction of the element. So if were to move it along the Z-axis now, it would move in the direction in which the element is facing.
 // KEY POINT:  Remember, We rotate the face so that it faces the required direction then translate on Z-axis.
+
+// NOTE:  MAKING THE BOX ANIMATE INTO POSITION
+// using jQuery or even CSS animations it may be possible to cause the box to assemble itself out of thin air
+// you target the z-position of the translate3d property
+// or for the left or right face, you can also animate the left property
+
+// NOTE:  ALTERNATE VERSION 1
+// in the alternate version from original the width and height of "each" face has been set... removing them causes the face to vanish
 
 ////////////////////////////////////////////
 // 		FRONT FACE
@@ -116,6 +127,7 @@
 	background: green;
   	width: $cubeDepth;
 	height: $cubeHeight;
+	// absolute positioned... unlike original it was shifted left as well
 	left: 50%;
 	margin-left: -$cubeDepth / 2;
 	transform: rotateY(-90deg) translate3d(0, 0, $cubeWidth / 2);
@@ -137,6 +149,8 @@
   	// transform: rotateY(90deg) translate3d(0, 0, $cubeSize/2);
 	width: $cubeDepth;
 	height: $cubeHeight;
+	// absolute positioned... unlike original it was shifted left as well
+	// changing this is similar to changing the z-position in translate3d
 	left: 50%;
 	margin-left: -$cubeDepth / 2;
 	transform: rotateY(90deg) translate3d(0, 0, $cubeWidth / 2);
