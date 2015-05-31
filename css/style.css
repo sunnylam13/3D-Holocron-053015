@@ -245,6 +245,9 @@ body {
 .separator {
   margin-top: 40px; }
 
+/*================================================
+CUBE
+=================================================*/
 .scene {
   -webkit-perspective: 1000px;
   perspective: 1000px;
@@ -462,3 +465,7 @@ body {
   100% {
     -webkit-transform: rotateX(-90deg) translate3d(0, 0, 125px);
     transform: rotateX(-90deg) translate3d(0, 0, 125px); } }
+
+/*================================================ */
+aside.credits {
+  margin-top: 10em; }
