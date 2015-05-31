@@ -235,6 +235,10 @@ p {
   margin-bottom: 20px;
   font-size: 16px; }
 
+body {
+  text-align: center;
+  padding: 50px; }
+
 .scene {
   margin: 100px;
   width: 150px;
@@ -317,7 +321,3 @@ p {
 #radio-bottom:checked ~ .scene .cube {
   -webkit-transform: rotateX(90deg);
   transform: rotateX(90deg); }
-
-body {
-  text-align: center;
-  padding: 50px; }
