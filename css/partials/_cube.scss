@@ -11,9 +11,12 @@
 //- How do we fix this? We wrap all our elements with another DIV to which give the perspective property:
 
 .scene {
+	// the original perspective: 600px was far more 3D skewed...
+	// I changed the value in the dev tools and I don't see the skew
 	perspective: 1000px;
 	width: $cubeWidth;
 	height: $cubeHeight;
+	// text-align: center differs
 	text-align: center;
 	display: inline-block;
 	@include marginPaddingReset1;
@@ -30,6 +33,8 @@
 
 .cube {
 	display: inline-block;
+	// used a different transition function
+	// reference http://cubic-bezier.com/#.17,.67,.83,.67
 	transition: all 0.85s cubic-bezier(0.175,0.885,0.320,1.275);
 
 	text-align: center;
@@ -41,6 +46,7 @@
 }
 
 .cube-face {
+	// use of overflow hidden so background images don't spill out?
 	overflow: hidden;
 	position: absolute;
 
