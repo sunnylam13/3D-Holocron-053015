@@ -11,15 +11,22 @@
 //- How do we fix this? We wrap all our elements with another DIV to which give the perspective property:
 
 .scene {
-	margin: 100px;
-	width: $cubeSize;
-	height: $cubeSize;
+	// margin: 100px;
+	// width: $cubeSize;
+	// height: $cubeSize;
 
+	// display: inline-block;
+	// @include marginPaddingReset1;
+	// margin-top: 50px;
+
+	// perspective: 600px;
+
+	perspective: 1000px;
+	width: $cubeWidth;
+	height: $cubeHeight;
+	text-align: center;
 	display: inline-block;
 	@include marginPaddingReset1;
-	margin-top: 50px;
-
-	perspective: 600px;
 }
 
 ////////////////////////////////////////////
@@ -52,6 +59,16 @@
 	
 	// add transitions
 	@include transitionEffectAllEaseIn(0.6s);
+
+	display: inline-block;
+	transition: all 0.85s cubic-bezier(0.175,0.885,0.320,1.275);
+
+	text-align: center;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	transform-style: preserve-3d;
+	transform: rotateX(-15deg) rotateY(15deg);
 }
 
 .cube-face {

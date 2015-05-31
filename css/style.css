@@ -237,18 +237,23 @@ p {
 
 body {
   text-align: center;
-  padding: 50px; }
+  padding: 50px;
+  padding: 20px;
+  color: #333;
+  font-family: "Open Sans", sans-serif; }
+
+.separator {
+  margin-top: 40px; }
 
 .scene {
-  margin: 100px;
-  width: 150px;
-  height: 150px;
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
+  width: 250px;
+  height: 250px;
+  text-align: center;
   display: inline-block;
   margin: 0;
-  padding: 0;
-  margin-top: 50px;
-  -webkit-perspective: 600px;
-  perspective: 600px; }
+  padding: 0; }
 
 .cube {
   width: 150px;
@@ -263,7 +268,17 @@ body {
   -webkit-transition: all 0.6s ease-in;
   -moz-transition: all 0.6s ease-in;
   -o-transition: all 0.6s ease-in;
-  -ms-transition: all 0.6s ease-in; }
+  -ms-transition: all 0.6s ease-in;
+  display: inline-block;
+  transition: all 0.85s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  text-align: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transform: rotateX(-15deg) rotateY(15deg);
+  transform: rotateX(-15deg) rotateY(15deg); }
 
 .cube-face {
   width: inherit;

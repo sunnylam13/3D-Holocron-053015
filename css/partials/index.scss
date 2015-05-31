@@ -1,6 +1,13 @@
 body {
 	text-align: center;
 	padding: 50px;
+	padding: 20px;
+	color: $baseFontColor;
+	font-family: $basefontfamily;
+}
+
+.separator {
+	margin-top: 40px;
 }
 
 // ----------------------------------------
