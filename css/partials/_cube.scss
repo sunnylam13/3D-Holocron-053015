@@ -3,6 +3,41 @@
 // http://codepen.io/chinchang/pen/lLzyB
 
 ////////////////////////////////////////////
+// 		VARIABLES
+////////////////////////////////////////////
+// this was moved out of variables.global.scss because I want the cube styling code to be its own self-contained unit for easy transfer
+
+// ----------------------------------------
+// CUBE  ------------------
+// ----------------------------------------
+
+// toggle the cube dimensions here.
+$cubeWidth: 250px;
+$cubeHeight: 250px;
+$cubeDepth: $cubeHeight;
+
+// ----------------------------------------
+// END CUBE  ------------------
+// ----------------------------------------
+
+
+
+// ----------------------------------------
+// ANIMATION  ------------------
+// ----------------------------------------
+$animDist1: 99999px;
+$animDist2: 5000px;
+$animDist3: 1000px;
+// ----------------------------------------
+// END ANIMATION  ------------------
+// ----------------------------------------
+
+////////////////////////////////////////////
+// 		END VARIABLES
+////////////////////////////////////////////
+
+
+////////////////////////////////////////////
 // 		SCENE
 ////////////////////////////////////////////
 
@@ -93,6 +128,7 @@
 	width: $cubeWidth;
 	height: $cubeHeight;
 	transform: translate3d(0, 0, $cubeDepth / 2);
+	animation: cube_face_front_one 4s linear 1.5s forwards;
 }
 
 ////////////////////////////////////////////
@@ -110,6 +146,7 @@
   	width: $cubeWidth;
 	height: $cubeHeight;
 	transform: rotateY(180deg) translate3d(0, 0, $cubeDepth / 2);
+	animation: cube_face_back_one 4s linear 1.5s forwards;
 }
 
 ////////////////////////////////////////////
@@ -131,6 +168,7 @@
 	left: 50%;
 	margin-left: -$cubeDepth / 2;
 	transform: rotateY(-90deg) translate3d(0, 0, $cubeWidth / 2);
+	animation: cube_face_left_one 4s linear 1.5s forwards;
 }
 
 ////////////////////////////////////////////
@@ -154,6 +192,7 @@
 	left: 50%;
 	margin-left: -$cubeDepth / 2;
 	transform: rotateY(90deg) translate3d(0, 0, $cubeWidth / 2);
+	animation: cube_face_right_one 4s linear 1.5s forwards;
 }
 
 ////////////////////////////////////////////
@@ -172,6 +211,7 @@
 	width: $cubeWidth;
 	height: $cubeDepth;
 	transform: rotateX(90deg) translate3d(0, 0, $cubeHeight / 2);
+	animation: cube_face_top_one 4s linear 1.5s forwards;
 }
 
 ////////////////////////////////////////////
@@ -188,6 +228,7 @@
   	width: $cubeWidth;
 	height: $cubeDepth;
 	transform: rotateX(-90deg) translate3d(0, 0, $cubeHeight / 2);
+	animation: cube_face_bottom_one 4s linear 1.5s forwards;
 }
 
 ////////////////////////////////////////////
@@ -260,4 +301,119 @@
 // 		END BACKGROUNDS FOR FACES
 ////////////////////////////////////////////
 
+////////////////////////////////////////////
+// 		ANIMATIONS - KEYFRAMES
+////////////////////////////////////////////
 
+@-webkit-keyframes cube_face_back_one {
+	0% {
+		transform: rotateY(180deg) translate3d(0, 0, $animDist1);
+	}
+
+	25% {
+		transform: rotateY(180deg) translate3d(0, 0, $animDist2);
+	}
+
+	75% {
+		transform: rotateY(180deg) translate3d(0, 0, $animDist3);
+	}
+
+	100% {
+		transform: rotateY(180deg) translate3d(0, 0, $cubeDepth / 2);
+	}
+}
+
+@-webkit-keyframes cube_face_front_one {
+	0% {
+		transform: translate3d(0, 0, $animDist1);
+	}
+
+	25% {
+		transform: translate3d(0, 0, $animDist2);
+	}
+
+	75% {
+		transform: translate3d(0, 0, $animDist3);
+	}
+
+	100% {
+		transform: translate3d(0, 0, $cubeDepth / 2);
+	}
+}
+
+@-webkit-keyframes cube_face_left_one {
+	0% {
+		transform: rotateY(-90deg) translate3d(0, 0, $animDist1);
+	}
+
+	25% {
+		transform: rotateY(-90deg) translate3d(0, 0, $animDist2);
+	}
+
+	75% {
+		transform: rotateY(-90deg) translate3d(0, 0, $animDist3);
+	}
+
+	100% {
+		transform: rotateY(-90deg) translate3d(0, 0, $cubeWidth / 2);
+	}
+}
+
+@-webkit-keyframes cube_face_right_one {
+	0% {
+		transform: rotateY(90deg) translate3d(0, 0, $animDist1);
+	}
+
+	25% {
+		transform: rotateY(90deg) translate3d(0, 0, $animDist2);
+	}
+
+	75% {
+		transform: rotateY(90deg) translate3d(0, 0, $animDist3);
+	}
+
+	100% {
+		transform: rotateY(90deg) translate3d(0, 0, $cubeWidth / 2);
+	}
+}
+
+@-webkit-keyframes cube_face_top_one {
+	0% {
+		transform: rotateX(90deg) translate3d(0, 0, $animDist1);
+	}
+
+	25% {
+		transform: rotateX(90deg) translate3d(0, 0, $animDist2);
+	}
+
+	75% {
+		transform: rotateX(90deg) translate3d(0, 0, $animDist3);
+	}
+
+	100% {
+		transform: rotateX(90deg) translate3d(0, 0, $cubeHeight / 2);
+	}
+}
+
+@-webkit-keyframes cube_face_bottom_one {
+	0% {
+		transform: rotateX(-90deg) translate3d(0, 0, $animDist1);
+	}
+
+	25% {
+		transform: rotateX(-90deg) translate3d(0, 0, $animDist2);
+	}
+
+	75% {
+		transform: rotateX(-90deg) translate3d(0, 0, $animDist3);
+	}
+
+	100% {
+		transform: rotateX(-90deg) translate3d(0, 0, $cubeHeight / 2);
+	}
+}
+
+
+////////////////////////////////////////////
+// 		END ANIMATIONS - KEYFRAMES
+////////////////////////////////////////////
