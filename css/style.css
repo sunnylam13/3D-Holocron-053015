@@ -216,7 +216,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 body {
   font-family: "Open Sans", sans-serif;
   font-size: 16px;
-  background: grey;
+  background: #FFF;
   position: relative; }
 
 .wrapper {
@@ -256,19 +256,6 @@ body {
   padding: 0; }
 
 .cube {
-  width: 150px;
-  width: inherit;
-  height: 150px;
-  height: inherit;
-  position: relative;
-  -webkit-perspective: 600px;
-  perspective: 600px;
-  -webkit-transform-style: preserve-3d;
-  transform-style: preserve-3d;
-  -webkit-transition: all 0.6s ease-in;
-  -moz-transition: all 0.6s ease-in;
-  -o-transition: all 0.6s ease-in;
-  -ms-transition: all 0.6s ease-in;
   display: inline-block;
   transition: all 0.85s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   text-align: center;
@@ -281,41 +268,60 @@ body {
   transform: rotateX(-15deg) rotateY(15deg); }
 
 .cube-face {
-  width: inherit;
-  height: inherit;
+  overflow: hidden;
   position: absolute;
-  background: red;
+  border: 1px solid #888;
+  background: #FFF;
+  box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.1), 0 0 50px rgba(0, 0, 0, 0.3);
+  color: #333;
+  line-height: 250px;
   opacity: 0.8; }
 
 .cube-face-front {
   background: yellow;
-  -webkit-transform: translate3d(0, 0, 75px);
-  transform: translate3d(0, 0, 75px); }
+  width: 250px;
+  height: 250px;
+  -webkit-transform: translate3d(0, 0, 125px);
+  transform: translate3d(0, 0, 125px); }
 
 .cube-face-back {
   background: orange;
-  -webkit-transform: rotateY(180deg) translate3d(0, 0, 75px);
-  transform: rotateY(180deg) translate3d(0, 0, 75px); }
+  width: 250px;
+  height: 250px;
+  -webkit-transform: rotateY(180deg) translate3d(0, 0, 125px);
+  transform: rotateY(180deg) translate3d(0, 0, 125px); }
 
 .cube-face-left {
   background: green;
-  -webkit-transform: rotateY(-90deg) translate3d(0, 0, 75px);
-  transform: rotateY(-90deg) translate3d(0, 0, 75px); }
+  width: 250px;
+  height: 250px;
+  left: 50%;
+  margin-left: -125px;
+  -webkit-transform: rotateY(-90deg) translate3d(0, 0, 125px);
+  transform: rotateY(-90deg) translate3d(0, 0, 125px); }
 
 .cube-face-right {
   background: magenta;
-  -webkit-transform: rotateY(90deg) translate3d(0, 0, 75px);
-  transform: rotateY(90deg) translate3d(0, 0, 75px); }
+  width: 250px;
+  height: 250px;
+  left: 50%;
+  margin-left: -125px;
+  -webkit-transform: rotateY(90deg) translate3d(0, 0, 125px);
+  transform: rotateY(90deg) translate3d(0, 0, 125px); }
 
 .cube-face-top {
   background: blue;
-  -webkit-transform: rotateX(90deg) translate3d(0, 0, 75px);
-  transform: rotateX(90deg) translate3d(0, 0, 75px); }
+  width: 250px;
+  height: 250px;
+  -webkit-transform: rotateX(90deg) translate3d(0, 0, 125px);
+  transform: rotateX(90deg) translate3d(0, 0, 125px); }
 
 .cube-face-bottom {
   background: red;
-  -webkit-transform: rotateX(-90deg) translate3d(0, 0, 75px);
-  transform: rotateX(-90deg) translate3d(0, 0, 75px); }
+  width: 250px;
+  height: 250px;
+  -webkit-transform: rotateX(-90deg) translate3d(0, 0, 125px);
+  transform: rotateX(-90deg) translate3d(0, 0, 125px); }
 
 #radio-back:checked ~ .scene .cube {
   -webkit-transform: rotateY(180deg);
@@ -336,3 +342,27 @@ body {
 #radio-bottom:checked ~ .scene .cube {
   -webkit-transform: rotateX(90deg);
   transform: rotateX(90deg); }
+
+.cube-face-front {
+  background: url(http://2.bp.blogspot.com/-JxKfUObT4L8/UYYaRhRNJmI/AAAAAAAAAUY/243IlIOKj2c/s320/brahama.jpg);
+  background-size: 100%; }
+
+.cube-face-left {
+  background: url(http://4.bp.blogspot.com/-HGFGdCGFTkw/UXVq6PNmS4I/AAAAAAAAAUE/hBNmVCOVlu4/s400/durga+wm.jpg);
+  background-size: auto 100%; }
+
+.cube-face-right {
+  background: url(http://2.bp.blogspot.com/-yrnBD8wJ-g0/UNRtPF8pR7I/AAAAAAAAATE/YSpLvqTNyoQ/s320/A+P+J+abdul+kalam_+swm+.jpg);
+  background-size: auto 100%; }
+
+.cube-face-top {
+  background: url(http://3.bp.blogspot.com/-mySu8dy4ux4/ULiVKS4YBbI/AAAAAAAAAR0/vBMi_4dAPDE/s400/rajiv+dixit+s.jpg);
+  background-size: auto 100%; }
+
+.cube-face-bottom {
+  background: url(http://2.bp.blogspot.com/-B9QWFtc9bVY/UHFs7y9GqkI/AAAAAAAAARI/YLDkoHYr3g4/s400/Gau+wm.jpg);
+  background-size: auto 100%; }
+
+.cube-face-back {
+  background: url(http://3.bp.blogspot.com/-ofufG97PpiU/UBzXu-1AisI/AAAAAAAAAP0/iDnhOh-vrb8/s400/shiv+ji.jpg);
+  background-size: auto 100%; }

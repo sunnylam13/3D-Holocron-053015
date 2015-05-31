@@ -11,16 +11,6 @@
 //- How do we fix this? We wrap all our elements with another DIV to which give the perspective property:
 
 .scene {
-	// margin: 100px;
-	// width: $cubeSize;
-	// height: $cubeSize;
-
-	// display: inline-block;
-	// @include marginPaddingReset1;
-	// margin-top: 50px;
-
-	// perspective: 600px;
-
 	perspective: 1000px;
 	width: $cubeWidth;
 	height: $cubeHeight;
@@ -39,27 +29,6 @@
 ////////////////////////////////////////////
 
 .cube {
-	width: $cubeSize;
-	width: inherit; // from .scene
-	height: $cubeSize;
-	height: inherit; // from .scene
-	position: relative;
-
-	// want all children to have the 3D perspective
-	// the lower the perspective value, the more pronounced the 3D effect
-	perspective: 600px;
-
-	// set up the 3D rendering context
-	// Without an element having the transform-style property set as preserve-3d, its children are rendered as flattened, having no stacking context. Thus even when we bought the front face closer on Z-axis, it continued to render it at its original z-index with no consideration to its position in the 3D space.
-	transform-style: preserve-3d;
-
-	// Now to rotate the cube we can simply apply rotations on the .cube element.
-	// testing
-	// transform: rotateY(180deg);
-	
-	// add transitions
-	@include transitionEffectAllEaseIn(0.6s);
-
 	display: inline-block;
 	transition: all 0.85s cubic-bezier(0.175,0.885,0.320,1.275);
 
@@ -72,10 +41,15 @@
 }
 
 .cube-face {
-	width: inherit;
-	height: inherit;
+	overflow: hidden;
 	position: absolute;
-	background: red;
+
+	border: 1px solid $borderColour;
+	background: $basebackcolor;
+	box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.1),
+	0 0 50px rgba(0, 0, 0, 0.3);
+	color: $baseFontColor;
+	line-height: $cubeWidth;
 	opacity: 0.8;
 }
 
@@ -98,9 +72,9 @@
 // Nothing to rotate here. Simple move the front face forward by half the cube's length.
 .cube-face-front {
 	background: yellow;
-	transform: translate3d(0, 0, $cubeSize/2);
-	// test line
-	// transform: translate3d(0,0,20px) rotateY(40deg);
+	width: $cubeWidth;
+	height: $cubeHeight;
+	transform: translate3d(0, 0, $cubeDepth / 2);
 }
 
 ////////////////////////////////////////////
@@ -114,7 +88,10 @@
 // The back face will face in the opposite direction to the front one. Which means it needs to be rotated by 180 degrees about the Y-axis before translating
 .cube-face-back {
 	background: orange;
-  	transform: rotateY(180deg) translate3d(0, 0, $cubeSize/2);
+  	// transform: rotateY(180deg) translate3d(0, 0, $cubeSize/2);
+  	width: $cubeWidth;
+	height: $cubeHeight;
+	transform: rotateY(180deg) translate3d(0, 0, $cubeDepth / 2);
 }
 
 ////////////////////////////////////////////
@@ -130,7 +107,11 @@
 
 .cube-face-left {
 	background: green;
-  	transform: rotateY(-90deg) translate3d(0, 0, $cubeSize/2);
+  	width: $cubeDepth;
+	height: $cubeHeight;
+	left: 50%;
+	margin-left: -$cubeDepth / 2;
+	transform: rotateY(-90deg) translate3d(0, 0, $cubeWidth / 2);
 }
 
 ////////////////////////////////////////////
@@ -146,7 +127,12 @@
 
 .cube-face-right {
 	background: magenta;
-  	transform: rotateY(90deg) translate3d(0, 0, $cubeSize/2);
+  	// transform: rotateY(90deg) translate3d(0, 0, $cubeSize/2);
+	width: $cubeDepth;
+	height: $cubeHeight;
+	left: 50%;
+	margin-left: -$cubeDepth / 2;
+	transform: rotateY(90deg) translate3d(0, 0, $cubeWidth / 2);
 }
 
 ////////////////////////////////////////////
@@ -162,7 +148,9 @@
 
 .cube-face-top {
 	background: blue;
-	transform: rotateX(90deg) translate3d(0, 0, $cubeSize/2);
+	width: $cubeWidth;
+	height: $cubeDepth;
+	transform: rotateX(90deg) translate3d(0, 0, $cubeHeight / 2);
 }
 
 ////////////////////////////////////////////
@@ -176,7 +164,9 @@
 
 .cube-face-bottom {
 	background: red;
-  	transform: rotateX(-90deg) translate3d(0, 0, $cubeSize/2);
+  	width: $cubeWidth;
+	height: $cubeDepth;
+	transform: rotateX(-90deg) translate3d(0, 0, $cubeHeight / 2);
 }
 
 ////////////////////////////////////////////
@@ -208,3 +198,45 @@
 ////////////////////////////////////////////
 // 		END CONTROLS FOR ROTATION OF CUBE
 ////////////////////////////////////////////
+
+
+////////////////////////////////////////////
+// 		BACKGROUNDS FOR FACES
+////////////////////////////////////////////
+
+// Apply backgrounds
+.cube-face-front {
+	background: url(http://2.bp.blogspot.com/-JxKfUObT4L8/UYYaRhRNJmI/AAAAAAAAAUY/243IlIOKj2c/s320/brahama.jpg);
+	background-size: 100%;
+}
+
+.cube-face-left {
+	background: url(http://4.bp.blogspot.com/-HGFGdCGFTkw/UXVq6PNmS4I/AAAAAAAAAUE/hBNmVCOVlu4/s400/durga+wm.jpg);
+	background-size: auto 100%;
+}
+
+.cube-face-right {
+	background: url(http://2.bp.blogspot.com/-yrnBD8wJ-g0/UNRtPF8pR7I/AAAAAAAAATE/YSpLvqTNyoQ/s320/A+P+J+abdul+kalam_+swm+.jpg);
+	background-size: auto 100%;
+}
+
+.cube-face-top {
+	background: url(http://3.bp.blogspot.com/-mySu8dy4ux4/ULiVKS4YBbI/AAAAAAAAAR0/vBMi_4dAPDE/s400/rajiv+dixit+s.jpg);
+	background-size: auto 100%;
+}
+
+.cube-face-bottom {
+	background: url(http://2.bp.blogspot.com/-B9QWFtc9bVY/UHFs7y9GqkI/AAAAAAAAARI/YLDkoHYr3g4/s400/Gau+wm.jpg);
+	background-size: auto 100%;
+}
+  
+.cube-face-back {
+	background: url(http://3.bp.blogspot.com/-ofufG97PpiU/UBzXu-1AisI/AAAAAAAAAP0/iDnhOh-vrb8/s400/shiv+ji.jpg);
+	background-size: auto 100%;
+}
+
+////////////////////////////////////////////
+// 		END BACKGROUNDS FOR FACES
+////////////////////////////////////////////
+
+
